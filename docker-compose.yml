@@ -1,0 +1,90 @@
+# Docker Compose configuration for NanoSimLab
+# Provides orchestration for API backend and GUI frontend
+
+version: "3.8"
+
+services:
+  # API Backend Service
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - BUILDKIT_INLINE_CACHE=1
+    image: ${IMAGE_NAME:-nanosimlab-api:local}
+    container_name: ${SERVICE_NAME:-nanosimlab-api}
+    ports:
+      - "${PORTS:-8080:8080}"
+    environment:
+      - ENV=production
+      - HOST=0.0.0.0
+      - PORT=8080
+    env_file:
+      - ${ENV_FILE:-.env}
+    volumes:
+      # Mount source code in development mode
+      - ${PWD}/src:/app/src:${DEV_MODE:+ro}
+      - ${PWD}/tests:/app/tests:${DEV_MODE:+ro}
+      # Mount data directory for persistent storage
+      - ./data:/app/data
+      # Additional mounts can be specified via MOUNTS env var
+    networks:
+      - nanosimlab-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/status"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+          cpus: "1.0"
+        reservations:
+          memory: 512M
+          cpus: "0.5"
+
+  # GUI Frontend Service
+  gui:
+    build:
+      context: ${GUI_PATH:-./gui}
+      dockerfile: Dockerfile
+    image: ${GUI_IMAGE_NAME:-nanosimlab-gui:local}
+    container_name: ${GUI_SERVICE_NAME:-nanosimlab-gui}
+    ports:
+      - "${GUI_PORT:-3000}:80"
+    environment:
+      - API_URL=http://api:8080
+    depends_on:
+      api:
+        condition: service_healthy
+    networks:
+      - nanosimlab-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    deploy:
+      resources:
+        limits:
+          memory: 128M
+          cpus: "0.2"
+        reservations:
+          memory: 32M
+          cpus: "0.1"
+
+networks:
+  nanosimlab-network:
+    driver: bridge
+    name: nanosimlab-network
+
+# Optional volumes for persistent data
+volumes:
+  nanosimlab-data:
+    name: nanosimlab-data
+    driver: local

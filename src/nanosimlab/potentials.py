@@ -12,27 +12,27 @@ import numpy as np
 
 class PairPotential:
     """Base class for pair potential implementations."""
-    
+
     def force(self, r_vec: np.ndarray, r: np.ndarray) -> np.ndarray:
         """
         Compute force between particle pairs.
-        
+
         Args:
             r_vec: Displacement vectors between pairs (M, dim)
             r: Distances between pairs (M,)
-            
+
         Returns:
             Forces on each pair (M, dim)
         """
         raise NotImplementedError
-        
+
     def energy(self, r: np.ndarray) -> np.ndarray:
         """
         Compute potential energy between particle pairs.
-        
+
         Args:
             r: Distances between pairs (M,)
-            
+
         Returns:
             Potential energies (M,)
         """
@@ -42,11 +42,11 @@ class PairPotential:
 class LennardJones(PairPotential):
     """
     Lennard-Jones 12-6 potential: U(r) = 4ε[(σ/r)^12 - (σ/r)^6].
-    
+
     Commonly used for modeling van der Waals interactions between
     nanoparticles and neutral atoms/molecules.
     """
-    
+
     def __init__(
         self,
         epsilon: float = 1.0,
@@ -99,11 +99,11 @@ class LennardJones(PairPotential):
 class Yukawa(PairPotential):
     """
     Yukawa/screened Coulomb potential: U(r) = A * exp(-κr) / r.
-    
+
     Models screened electrostatic interactions, commonly used for
     charged nanoparticles in ionic solutions (DLVO theory).
     """
-    
+
     def __init__(
         self,
         A: float = 1.0,

@@ -11,10 +11,11 @@ __email__ = "kevin@example.com"
 
 __all__ = [
     "potentials",
-    "integrators", 
+    "integrators",
     "system",
     "analysis",
     "cli",
+    "api",
 ]
 
 from . import analysis, integrators, potentials, system

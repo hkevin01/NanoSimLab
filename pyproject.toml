@@ -7,62 +7,56 @@ name = "nanosimlab"
 version = "0.1.0"
 description = "Lightweight Brownian dynamics and analysis toolkit for nanoparticles and proto-nanorobotics."
 readme = "README.md"
-license = {text = "MIT"}
-authors = [{name = "Kevin", email = "kevin@example.com"}]
+license = { text = "MIT" }
+authors = [{ name = "Kevin", email = "kevin@example.com" }]
 requires-python = ">=3.10"
 dependencies = [
-  "numpy>=1.24",
-  "scipy>=1.10",
-  "click>=8.1",
+    "numpy>=1.24",
+    "scipy>=1.10",
+    "click>=8.1",
+    "fastapi>=0.104.0",
+    "uvicorn[standard]>=0.24.0",
+    "pydantic>=2.4.0",
 ]
-keywords = ["nanotechnology", "nanorobotics", "brownian dynamics", "simulation", "materials"]
+keywords = [
+    "nanotechnology",
+    "nanorobotics",
+    "brownian dynamics",
+    "simulation",
+    "materials",
+]
 classifiers = [
-  "Programming Language :: Python :: 3",
-  "Programming Language :: Python :: 3.10",
-  "Programming Language :: Python :: 3.11", 
-  "Programming Language :: Python :: 3.12",
-  "License :: OSI Approved :: MIT License",
-  "Topic :: Scientific/Engineering :: Physics",
-  "Topic :: Scientific/Engineering :: Chemistry",
-  "Development Status :: 3 - Alpha",
-  "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Scientific/Engineering :: Physics",
+    "Topic :: Scientific/Engineering :: Chemistry",
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
 ]
 
 [project.optional-dependencies]
-analysis = [
-  "matplotlib>=3.7",
-  "seaborn>=0.12",
-]
-molsim = [
-  "mdanalysis>=2.6",
-  "gsd>=3.2",
-  "freud-analysis>=2.15",
-]
+analysis = ["matplotlib>=3.7", "seaborn>=0.12"]
+molsim = ["mdanalysis>=2.6", "gsd>=3.2", "freud-analysis>=2.15"]
 builder = [
-  "ase>=3.22.1",
-  "pymatgen>=2024.5.1",
-  "mbuild>=0.17.1",
-  "openbabel-wheel>=3.1.1.20; platform_system != 'Linux'",
+    "ase>=3.22.1",
+    "pymatgen>=2024.5.1",
+    "mbuild>=0.17.1",
+    "openbabel-wheel>=3.1.1.20; platform_system != 'Linux'",
 ]
-viz = [
-  "nglview>=3.1",
-  "py3Dmol>=2.0.4",
-  "plotly>=5.17",
-]
+viz = ["nglview>=3.1", "py3Dmol>=2.0.4", "plotly>=5.17"]
 dev = [
-  "pytest>=7.4",
-  "pytest-cov>=4.1",
-  "black>=23.0",
-  "isort>=5.12",
-  "flake8>=6.0",
-  "mypy>=1.5",
-  "pre-commit>=3.4",
+    "pytest>=7.4",
+    "pytest-cov>=4.1",
+    "black>=23.0",
+    "isort>=5.12",
+    "flake8>=6.0",
+    "mypy>=1.5",
+    "pre-commit>=3.4",
 ]
-docs = [
-  "sphinx>=7.1",
-  "sphinx-rtd-theme>=1.3",
-  "myst-parser>=2.0",
-]
+docs = ["sphinx>=7.1", "sphinx-rtd-theme>=1.3", "myst-parser>=2.0"]
 
 [project.scripts]
 nanosim = "nanosimlab.cli:main"
@@ -121,9 +115,7 @@ strict_equality = true
 [tool.pytest.ini_options]
 minversion = "7.0"
 addopts = "-ra -q --strict-markers --strict-config"
-testpaths = [
-    "tests",
-]
+testpaths = ["tests"]
 markers = [
     "slow: marks tests as slow (deselect with '-m \"not slow\"')",
     "integration: marks tests as integration tests",
@@ -131,10 +123,7 @@ markers = [
 
 [tool.coverage.run]
 source = ["src"]
-omit = [
-    "*/tests/*",
-    "*/test_*",
-]
+omit = ["*/tests/*", "*/test_*"]
 
 [tool.coverage.report]
 exclude_lines = [
