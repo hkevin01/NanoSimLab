@@ -2,13 +2,14 @@
 Numerical integration schemes for Brownian dynamics simulations.
 
 This module provides integration algorithms for overdamped Langevin dynamics,
-commonly used in nanoparticle simulations where inertial effects are negligible.
+commonly used in nanoparticle simulations where inertial effects are
+negligible.
 """
 
 from __future__ import annotations
 
 import numpy as np
-from typing import Union, Optional
+from typing import Optional
 
 
 def overdamped_langevin_step(
@@ -20,12 +21,14 @@ def overdamped_langevin_step(
     rng: Optional[np.random.Generator] = None
 ) -> np.ndarray:
     """
-    Perform one Euler-Maruyama integration step for overdamped Langevin dynamics.
-    
+    Perform one Euler-Maruyama integration step for overdamped Langevin
+    dynamics.
+
     Integrates the stochastic differential equation:
     dx = (F/γ) dt + √(2kT/γ) dW
-    
-    Where F is the force, γ is friction, T is temperature, and dW is Wiener noise.
+
+    Where F is the force, γ is friction, T is temperature, and dW is
+    Wiener noise.
     Uses reduced units with Boltzmann constant k_B = 1.
     
     Args:

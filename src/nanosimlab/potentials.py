@@ -8,7 +8,6 @@ nanoparticle simulations, including Lennard-Jones and Yukawa potentials.
 from __future__ import annotations
 
 import numpy as np
-from typing import Union
 
 
 class PairPotential:
@@ -49,17 +48,17 @@ class LennardJones(PairPotential):
     """
     
     def __init__(
-        self, 
-        epsilon: float = 1.0, 
-        sigma: float = 1.0, 
-        rcut: Union[float, None] = 2.5
-    ):
+        self,
+        epsilon: float = 1.0,
+        sigma: float = 1.0,
+        rcut: float | None = 2.5
+    ) -> None:
         """
         Initialize Lennard-Jones potential parameters.
-        
+
         Args:
             epsilon: Energy scale parameter
-            sigma: Length scale parameter  
+            sigma: Length scale parameter
             rcut: Cutoff radius (None for no cutoff)
         """
         self.eps = float(epsilon)
@@ -106,14 +105,14 @@ class Yukawa(PairPotential):
     """
     
     def __init__(
-        self, 
-        A: float = 1.0, 
-        kappa: float = 1.0, 
-        rcut: Union[float, None] = None
-    ):
+        self,
+        A: float = 1.0,
+        kappa: float = 1.0,
+        rcut: float | None = None
+    ) -> None:
         """
         Initialize Yukawa potential parameters.
-        
+
         Args:
             A: Interaction strength
             kappa: Inverse screening length
@@ -124,7 +123,7 @@ class Yukawa(PairPotential):
         self.rcut = float(rcut) if rcut is not None else None
 
     def _mask(self, r: np.ndarray) -> np.ndarray:
-        """Apply cutoff mask to distances.""" 
+        """Apply cutoff mask to distances."""
         if self.rcut is None:
             return r > 0
         return (r > 0) & (r < self.rcut)
@@ -139,7 +138,7 @@ class Yukawa(PairPotential):
         # dU/dr = A * (-κ * exp(-κr)/r - exp(-κr)/r^2)
         dUdr = np.zeros_like(r)
         dUdr[mask] = self.A * (
-            -self.kappa * expkr[mask] * invr[mask] 
+            -self.kappa * expkr[mask] * invr[mask]
             - expkr[mask] * invr[mask]**2
         )
         mag = -dUdr / np.where(r > 0, r, 1.0)  # F = -dU/dr * r_vec/r
