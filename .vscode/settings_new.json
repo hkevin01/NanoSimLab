@@ -1,0 +1,227 @@
+{
+    // ========== Copilot Settings ==========
+    "chat.tools.autoApprove": true,
+    "chat.agent.maxRequests": 100,
+    // ========== Python Settings ==========
+    "python.defaultInterpreterPath": "./.venv/bin/python",
+    "python.envFile": "${workspaceFolder}/.env",
+    "python.terminal.activateEnvironment": true,
+    "python.analysis.typeCheckingMode": "basic",
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.autoSearchPaths": true,
+    "python.analysis.extraPaths": [
+        "./src"
+    ],
+    // Python Testing
+    "python.testing.pytestEnabled": true,
+    "python.testing.pytestArgs": [
+        "tests/"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.autoTestDiscoverOnSaveEnabled": true,
+    // Python Linting and Formatting
+    "python.linting.enabled": true,
+    "python.linting.flake8Enabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.linting.mypyEnabled": true,
+    "python.formatting.provider": "black",
+    "python.formatting.blackArgs": [
+        "--line-length=100"
+    ],
+    "python.sortImports.args": [
+        "--profile",
+        "black",
+        "--line-length=100"
+    ],
+    "python.linting.flake8Args": [
+        "--max-line-length=100",
+        "--extend-ignore=E203,W503",
+        "--naming-style=snake_case"
+    ],
+    // ========== Editor Settings ==========
+    "editor.formatOnSave": true,
+    "editor.formatOnType": false,
+    "editor.formatOnPaste": false,
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false,
+    "editor.codeActionsOnSave": {
+        "source.fixAll": "never",
+        "source.organizeImports": "explicit"
+    },
+    "editor.suggest.insertMode": "replace",
+    "editor.acceptSuggestionOnCommitCharacter": false,
+    "editor.acceptSuggestionOnEnter": "on",
+    "editor.minimap.enabled": true,
+    "editor.minimap.showSlider": "always",
+    "editor.rulers": [
+        100
+    ],
+    // ========== Language-Specific Settings ==========
+    "[python]": {
+        "editor.tabSize": 4,
+        "editor.insertSpaces": true,
+        "editor.detectIndentation": false,
+        "editor.rulers": [
+            100
+        ],
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+        }
+    },
+    "[java]": {
+        "editor.tabSize": 4,
+        "editor.insertSpaces": true,
+        "editor.detectIndentation": false,
+        "editor.rulers": [
+            120
+        ],
+        "editor.formatOnSave": true,
+        "java.format.settings.url": "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml",
+        "java.codeGeneration.hashCodeEquals.useJava7Objects": true,
+        "java.codeGeneration.useBlocks": true
+    },
+    "[cpp]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "editor.detectIndentation": false,
+        "editor.rulers": [
+            100
+        ],
+        "editor.formatOnSave": true,
+        "C_Cpp.clang_format_style": "{ BasedOnStyle: Google, IndentWidth: 2, ColumnLimit: 100, NamespaceIndentation: None }"
+    },
+    "[c]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "editor.detectIndentation": false,
+        "editor.rulers": [
+            100
+        ],
+        "editor.formatOnSave": true,
+        "C_Cpp.clang_format_style": "{ BasedOnStyle: Google, IndentWidth: 2, ColumnLimit: 100 }"
+    },
+    "[markdown]": {
+        "editor.wordWrap": "on",
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "editor.quickSuggestions": {
+            "comments": "off",
+            "strings": "off",
+            "other": "off"
+        }
+    },
+    "[json]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true
+    },
+    "[jsonc]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true
+    },
+    "[yaml]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "editor.autoIndent": "advanced"
+    },
+    "[toml]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true
+    },
+    // ========== File Management ==========
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 1000,
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "files.eol": "\n",
+    "files.associations": {
+        "*.toml": "toml",
+        "*.yml": "yaml",
+        "*.yaml": "yaml",
+        "*.md": "markdown",
+        "requirements*.txt": "pip-requirements",
+        "Dockerfile*": "dockerfile",
+        "*.ipynb": "jupyter",
+        "*.pyx": "python",
+        "*.pxd": "python"
+    },
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/node_modules/*/**": true,
+        "**/.venv/**": true,
+        "**/venv/**": true,
+        "**/__pycache__/**": true,
+        "**/.pytest_cache/**": true,
+        "**/.mypy_cache/**": true,
+        "**/dist/**": true,
+        "**/build/**": true,
+        "**/*.egg-info/**": true
+    },
+    // ========== Search Settings ==========
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/bower_components": true,
+        "**/*.code-search": true,
+        "**/.venv": true,
+        "**/venv": true,
+        "**/__pycache__": true,
+        "**/.pytest_cache": true,
+        "**/.mypy_cache": true,
+        "**/dist": true,
+        "**/build": true,
+        "**/*.egg-info": true,
+        "**/*.npz": true,
+        "**/*.h5": true,
+        "**/*.hdf5": true,
+        "**/logs": true,
+        "**/*.log": true
+    },
+    // ========== Git Settings ==========
+    "git.autofetch": true,
+    "git.enableSmartCommit": true,
+    "git.confirmSync": false,
+    "git.untrackedChanges": "separate",
+    // ========== Terminal Settings ==========
+    "terminal.integrated.defaultProfile.linux": "bash",
+    "terminal.integrated.env.linux": {
+        "PYTHONPATH": "${workspaceFolder}/src"
+    },
+    "terminal.integrated.cursorBlinking": true,
+    "terminal.integrated.cursorStyle": "line",
+    // ========== Scientific Computing ==========
+    "jupyter.askForKernelRestart": false,
+    "jupyter.interactiveWindow.textEditor.executeSelection": true,
+    "jupyter.sendSelectionToInteractiveWindow": true,
+    // ========== Explorer Settings ==========
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    "breadcrumbs.enabled": true,
+    "breadcrumbs.showFiles": true,
+    "breadcrumbs.showModules": true,
+    // ========== Problems Settings ==========
+    "problems.decorations.enabled": true,
+    // ========== Naming Convention Enforcement ==========
+    // Python: snake_case for variables, functions, modules
+    // Java: camelCase for variables/methods, PascalCase for classes
+    // C++: snake_case or camelCase (Google style)
+    "python.linting.flake8Args": [
+        "--max-line-length=100",
+        "--extend-ignore=E203,W503,N802,N803,N806",
+        "--per-file-ignores=__init__.py:F401"
+    ],
+    // ========== File Nesting (based on antfu's config) ==========
+    "explorer.fileNesting.enabled": true,
+    "explorer.fileNesting.expand": false,
+    "explorer.fileNesting.patterns": {
+        "*.py": "$(capture).pyi, $(capture)_test.py, test_$(capture).py",
+        "*.cpp": "$(capture).hpp, $(capture).h, $(capture).hxx",
+        "*.c": "$(capture).h",
+        "*.java": "$(capture).class",
+        "pyproject.toml": "*.cfg, setup.py, setup.cfg, requirements*.txt, Pipfile*, poetry.lock, .python-version",
+        "README.md": "LICENSE*, CHANGELOG*, CONTRIBUTING*, AUTHORS*, MAINTAINERS*",
+        ".gitignore": ".gitattributes, .gitmodules, .gitmessage, .mailmap",
+        "Dockerfile": ".dockerignore, docker-compose.*, dockerfile*"
+    }
+}

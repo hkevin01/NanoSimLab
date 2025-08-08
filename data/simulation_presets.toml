@@ -1,0 +1,48 @@
+# Example simulation parameters for various nanoparticle systems
+
+[gold_nanoparticles]
+# Gold nanoparticles in water (reduced units)
+n_particles = 100
+box_size = 15.0
+temperature = 1.0   # kT at room temperature
+time_step = 1e-4
+total_steps = 50000
+potential = "lj"
+epsilon = 0.8       # Attractive interactions
+sigma = 1.2         # Particle size
+cutoff = 3.0
+
+[drug_carriers]
+# Drug delivery nanocarriers in blood plasma
+n_particles = 50
+box_size = 12.0
+temperature = 1.05   # Body temperature (310K/298K)
+time_step = 5e-5
+total_steps = 100000
+potential = "yukawa"
+A = 2.0              # Electrostatic strength
+kappa = 1.5          # Screening length
+
+[magnetic_particles]
+# Magnetic nanoparticles with dipolar interactions
+n_particles = 200
+box_size = 20.0
+temperature = 0.8
+time_step = 1e-4
+total_steps = 25000
+potential = "lj"
+epsilon = 1.5
+sigma = 1.0
+cutoff = 2.5
+
+[self_assembly]
+# Particles designed for self-assembly
+n_particles = 300
+box_size = 25.0
+temperature = 0.6    # Lower temperature for assembly
+time_step = 1e-4
+total_steps = 200000
+potential = "lj"
+epsilon = 2.0        # Strong attractions
+sigma = 1.0
+cutoff = 2.5

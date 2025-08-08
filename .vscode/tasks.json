@@ -1,0 +1,12 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Create Python Virtual Environment",
+			"type": "shell",
+			"command": "python3 -m venv .venv && source .venv/bin/activate && pip install --upgrade pip",
+			"group": "build",
+			"isBackground": false
+		}
+	]
+}

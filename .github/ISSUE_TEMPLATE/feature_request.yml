@@ -1,0 +1,100 @@
+name: Feature Request
+description: Suggest a new feature or enhancement for NanoSimLab
+title: "[Feature]: "
+labels: ["enhancement", "feature-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a new feature! Please provide as much detail as possible about your idea.
+
+  - type: textarea
+    id: feature-description
+    attributes:
+      label: Feature Description
+      description: A clear and concise description of the feature you'd like to see.
+      placeholder: Describe the feature you want to be added.
+    validations:
+      required: true
+
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Motivation
+      description: Why is this feature needed? What problem does it solve?
+      placeholder: Explain the motivation behind this feature request.
+    validations:
+      required: true
+
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Use Case
+      description: Describe how you would use this feature.
+      placeholder: Provide a concrete example of how this feature would be used.
+
+  - type: textarea
+    id: proposed-solution
+    attributes:
+      label: Proposed Solution
+      description: How do you think this feature should be implemented?
+      placeholder: Describe your proposed solution or implementation approach.
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternative Solutions
+      description: Are there any alternative solutions or workarounds you've considered?
+      placeholder: Describe any alternative approaches you've thought about.
+
+  - type: textarea
+    id: example-code
+    attributes:
+      label: Example Code
+      description: If applicable, provide an example of how the feature might be used.
+      render: python
+      placeholder: |
+        # Example usage of the proposed feature
+        import nanosimlab
+        # Your example here
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: How important is this feature to you?
+      options:
+        - Low - Nice to have
+        - Medium - Would be helpful
+        - High - Important for my work
+        - Critical - Blocking my progress
+    validations:
+      required: true
+
+  - type: dropdown
+    id: complexity
+    attributes:
+      label: Estimated Complexity
+      description: How complex do you think this feature is to implement?
+      options:
+        - Low - Small change or addition
+        - Medium - Moderate implementation effort
+        - High - Significant development required
+        - Unknown - Not sure about complexity
+
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: Contribution
+      description: Are you willing to help implement this feature?
+      options:
+        - label: I'm willing to submit a pull request for this feature.
+        - label: I can help with testing this feature.
+        - label: I can help with documentation for this feature.
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Add any other context, screenshots, or examples about the feature request.
+      placeholder: Any additional information that might be relevant.
